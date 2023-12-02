@@ -53,7 +53,6 @@ function conditions(you, home) {
 // Listener of chooseBtn
 chooseBtn.forEach(btn => {
   btn.addEventListener('click', e => {
-    e.stopPropagation()
     const randomNumber = Math.floor(Math.random() * 5) + 1
     const you = `chooseBtn-${e.target.getAttribute('data-title')}`
     const home = `chooseBtn-${items[randomNumber - 1]}`

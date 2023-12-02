@@ -146,6 +146,7 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
+  pointer-events: none;
   z-index: 10;
 }
 .chooseBtn span::after {
