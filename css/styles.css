@@ -26,6 +26,10 @@ body {
   min-height: 100vh;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* app */
 .app {
   margin: 0 auto;
@@ -34,6 +38,7 @@ body {
 
 /* header */
 .header {
+  align-items: center;
   border: 3px solid var(--color-outline);
   border-radius: 15px;
   display: flex;
@@ -95,7 +100,7 @@ body {
 
 /* pentagon */
 .pentagon {
-  background: url(../images/bg-pentagon.svg) center no-repeat;
+  background: url(../images/bg-pentagon.svg) center/cover no-repeat;
   height: var(--pentagon);
   width: var(--pentagon);
   margin: 0 auto;
@@ -310,6 +315,38 @@ body {
 }
 .attribution a {
   color: var(--color-text);
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --pentagon: 227px;
+  }
+  .app {
+    padding: 32px;
+  }
+  .header {
+    padding: 12px 12px 12px 24px;
+  }
+  .header-logo {
+    width: 54px;
+  }
+  /* score */
+  .score {
+    width: 80px;
+    padding: 10px;
+  }
+  .score-title {
+    font-size: 10px;
+    letter-spacing: 1.563px;
+  }
+  .score-number {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  /* chooseBtn */
+  .chooseBtn {
+    --circle: 96px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
