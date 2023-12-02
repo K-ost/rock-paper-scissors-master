@@ -12,7 +12,6 @@
   --scissors: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
   --spoke: radial-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
   --pentagon: 345px;
-  --circle: 148px;
 }
 
 /* Reset */
@@ -105,7 +104,16 @@ body {
 }
 
 /* chooseBtn */
+.chooseBtn::after, .chooseBtn span::after, .chooseBtn::before {
+  content: ''; display: block; position: absolute;
+}
+.chooseBtn::after, .chooseBtn span::after {
+  border-radius: 50%; width: 100%; height: 100%; left: 0;
+}
+
 .chooseBtn {
+  --circle: 148px;
+  
   background: 0;
   border: 0;
   border-radius: 50%;
@@ -113,63 +121,76 @@ body {
   cursor: pointer;
   display: block;
   height: calc(var(--circle));
-  padding: 17px;
-  position: absolute;
+  padding: 12px 17px 22px;
+  position: relative;
   width: var(--circle);
+  &::after { bottom: 6px; }
+  &.abs { position: absolute; }
   span {
-    background-color: var(--color-white);
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #BABFD4;
     border-radius: 50%;
     display: block;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    &::after {
+      background: var(--color-white);
+      background-position: center;
+      background-repeat: no-repeat;
+      top: 5px;
+    }
   }
   &-lizard {
-    background: var(--lizard);
-    bottom: -43px;
-    left: 0;
-    span { background-image: url(../images/icon-lizard.svg); }
+    background: #5F37A7;
+    &.abs { bottom: -41px; left: 0; }
+    &::after { background: var(--lizard); }
+    span::after { background-image: url(../images/icon-lizard.svg); }
   }
   &-paper {
-    background: var(--paper);
-    right: -64px;
-    top: 54px;
-    span { background-image: url(../images/icon-paper.svg); }
+    background: #2A45C2;
+    &.abs { right: -64px; top: 54px; }
+    &::after { background: var(--paper); }
+    span::after { background-image: url(../images/icon-paper.svg); }
   }
   &-rock {
-    background: var(--rock);
-    bottom: -43px;
-    right: 0;
-    span { background-image: url(../images/icon-rock.svg); }
+    background: #9D1634;
+    &.abs { bottom: -43px; right: 0; }
+    &::after { background: var(--rock); }
+    span::after { background-image: url(../images/icon-rock.svg); }
   }
   &-scissors {
-    background: var(--scissors);
-    left: 50%;
-    transform: translateX(-50%);
-    top: -75px;
-    span { background-image: url(../images/icon-scissors.svg); }
+    background: #C76C1A;
+    &.abs { left: 50%; transform: translateX(-50%); top: -70px; }
+    &::after { background: var(--scissors); }
+    span::after { background-image: url(../images/icon-scissors.svg); }
   }
   &-spock {
-    background: var(--spoke);
-    left: -64px;
-    top: 54px;
-    span { background-image: url(../images/icon-spock.svg); }
+    background: #2D8DAB;
+    &.abs { left: -64px; top: 54px; }
+    &::after { background: var(--spoke); }
+    span::after { background-image: url(../images/icon-spock.svg); }
   }
+
+  // Hover
   &::before {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
     top: 50%;
-    content: '';
-    display: block;
     left: 50%;
-    position: absolute;
+    margin-top: -3px;
     width: calc(var(--circle) + 44px);
     height: calc(var(--circle) + 40px);
     transform: scale(0) translate(-50%,-50%);
     transform-origin: 0% 0%;
   }
   &:hover::before, &:active::before { animation: btnHover 1.5s ease-in-out infinite; }
+
+  &.large {
+    --circle: 292px;
+    span::after { background-size: 100px; }
+  }
 }
 
 @keyframes btnHover {
@@ -198,6 +219,7 @@ body {
     margin: 0 32px;
     text-align: center;
     width: 293px;
+    position: relative;
     &.hidden {
       display: none;
     }
@@ -214,32 +236,7 @@ body {
       text-transform: uppercase;
     }
   }
-  span {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-    position: relative;
-    width: 293px;
-    height: 300px;
-    &::before {
-      background: rgba(0, 0, 0, 0.10);
-      border-radius: 50%;
-      content: '';
-      display: block;
-      height: 223px;
-      width: 223px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-    }
-    &.lizard { background-image: url(../images/icon-lizard.svg); }
-    &.paper { background-image: url(../images/icon-paper.svg); }
-    &.rock { background-image: url(../images/icon-rock.svg); }
-    &.scissors { background-image: url(../images/icon-scissors.svg); }
-    &.spock { background-image: url(../images/icon-spock.svg); }
-  }
+  .chooseBtn { margin: 0 auto; }
 }
 
 

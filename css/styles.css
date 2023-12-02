@@ -11,7 +11,6 @@
   --scissors: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
   --spoke: radial-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
   --pentagon: 345px;
-  --circle: 148px;
 }
 
 /* Reset */
@@ -107,7 +106,21 @@ body {
 }
 
 /* chooseBtn */
+.chooseBtn::after, .chooseBtn span::after, .chooseBtn::before {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.chooseBtn::after, .chooseBtn span::after {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
 .chooseBtn {
+  --circle: 148px;
   background: 0;
   border: 0;
   border-radius: 50%;
@@ -115,68 +128,104 @@ body {
   cursor: pointer;
   display: block;
   height: calc(var(--circle));
-  padding: 17px;
-  position: absolute;
+  padding: 12px 17px 22px;
+  position: relative;
   width: var(--circle);
 }
+.chooseBtn::after {
+  bottom: 6px;
+}
+.chooseBtn.abs {
+  position: absolute;
+}
 .chooseBtn span {
-  background-color: var(--color-white);
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #BABFD4;
   border-radius: 50%;
   display: block;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+.chooseBtn span::after {
+  background: var(--color-white);
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 5px;
 }
 .chooseBtn-lizard {
-  background: var(--lizard);
-  bottom: -43px;
+  background: #5F37A7;
+}
+.chooseBtn-lizard.abs {
+  bottom: -41px;
   left: 0;
 }
-.chooseBtn-lizard span {
+.chooseBtn-lizard::after {
+  background: var(--lizard);
+}
+.chooseBtn-lizard span::after {
   background-image: url(../images/icon-lizard.svg);
 }
 .chooseBtn-paper {
-  background: var(--paper);
+  background: #2A45C2;
+}
+.chooseBtn-paper.abs {
   right: -64px;
   top: 54px;
 }
-.chooseBtn-paper span {
+.chooseBtn-paper::after {
+  background: var(--paper);
+}
+.chooseBtn-paper span::after {
   background-image: url(../images/icon-paper.svg);
 }
 .chooseBtn-rock {
-  background: var(--rock);
+  background: #9D1634;
+}
+.chooseBtn-rock.abs {
   bottom: -43px;
   right: 0;
 }
-.chooseBtn-rock span {
+.chooseBtn-rock::after {
+  background: var(--rock);
+}
+.chooseBtn-rock span::after {
   background-image: url(../images/icon-rock.svg);
 }
 .chooseBtn-scissors {
-  background: var(--scissors);
+  background: #C76C1A;
+}
+.chooseBtn-scissors.abs {
   left: 50%;
   transform: translateX(-50%);
-  top: -75px;
+  top: -70px;
 }
-.chooseBtn-scissors span {
+.chooseBtn-scissors::after {
+  background: var(--scissors);
+}
+.chooseBtn-scissors span::after {
   background-image: url(../images/icon-scissors.svg);
 }
 .chooseBtn-spock {
-  background: var(--spoke);
+  background: #2D8DAB;
+}
+.chooseBtn-spock.abs {
   left: -64px;
   top: 54px;
 }
-.chooseBtn-spock span {
+.chooseBtn-spock::after {
+  background: var(--spoke);
+}
+.chooseBtn-spock span::after {
   background-image: url(../images/icon-spock.svg);
 }
 .chooseBtn::before {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   top: 50%;
-  content: "";
-  display: block;
   left: 50%;
-  position: absolute;
+  margin-top: -3px;
   width: calc(var(--circle) + 44px);
   height: calc(var(--circle) + 40px);
   transform: scale(0) translate(-50%, -50%);
@@ -184,6 +233,12 @@ body {
 }
 .chooseBtn:hover::before, .chooseBtn:active::before {
   animation: btnHover 1.5s ease-in-out infinite;
+}
+.chooseBtn.large {
+  --circle: 292px;
+}
+.chooseBtn.large span::after {
+  background-size: 100px;
 }
 
 @keyframes btnHover {
@@ -218,6 +273,7 @@ body {
   margin: 0 32px;
   text-align: center;
   width: 293px;
+  position: relative;
 }
 .resultInner-item.hidden {
   display: none;
@@ -234,41 +290,8 @@ body {
   margin: 0 0 63px;
   text-transform: uppercase;
 }
-.resultInner span {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
-  position: relative;
-  width: 293px;
-  height: 300px;
-}
-.resultInner span::before {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  content: "";
-  display: block;
-  height: 223px;
-  width: 223px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.resultInner span.lizard {
-  background-image: url(../images/icon-lizard.svg);
-}
-.resultInner span.paper {
-  background-image: url(../images/icon-paper.svg);
-}
-.resultInner span.rock {
-  background-image: url(../images/icon-rock.svg);
-}
-.resultInner span.scissors {
-  background-image: url(../images/icon-scissors.svg);
-}
-.resultInner span.spock {
-  background-image: url(../images/icon-spock.svg);
+.resultInner .chooseBtn {
+  margin: 0 auto;
 }
 
 /* attribution */

@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/styles.css">
-  
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
-
-  Play Again
 </head>
 <body>
 
@@ -27,52 +23,57 @@
       </div>
     </header><!-- /header -->
 
-    <div class="pentagon">
-      <button class="chooseBtn chooseBtn-rock" data-title="rock">
-        <span></span>
-      </button>
-      <button class="chooseBtn chooseBtn-paper" data-title="paper">
-        <span></span>
-      </button>
-      <button class="chooseBtn chooseBtn-scissors" data-title="scissors">
-        <span></span>
-      </button>
-      <button class="chooseBtn chooseBtn-lizard" data-title="lizard">
-        <span></span>
-      </button>
-      <button class="chooseBtn chooseBtn-spock" data-title="spock">
-        <span></span>
-      </button>
-    </div><!-- /pentagon -->
+    <main>
 
-    <button class="btn btn-rules">Rules</button>
+      <div class="pentagon">
+        <button class="chooseBtn abs chooseBtn-rock" data-title="rock">
+          <span></span>
+        </button>
+        <button class="chooseBtn abs chooseBtn-paper" data-title="paper">
+          <span></span>
+        </button>
+        <button class="chooseBtn abs chooseBtn-scissors" data-title="scissors">
+          <span></span>
+        </button>
+        <button class="chooseBtn abs chooseBtn-lizard" data-title="lizard">
+          <span></span>
+        </button>
+        <button class="chooseBtn abs chooseBtn-spock" data-title="spock">
+          <span></span>
+        </button>
+      </div><!-- /pentagon -->
 
-    <div id="result" class="hidden">
-      <div class="resultInner">
-        <div class="resultInner-item">
-          <h2>You Picked</h2>
-          <span id="yourResult"></span>
+      <button class="btn btn-rules">Rules</button>
+
+      <div id="result" class="hidden">
+        <div class="resultInner">
+          <div class="resultInner-item">
+            <h2>You Picked</h2>
+            <div class="chooseBtn large" id="yourResult">
+              <span></span>
+            </div>
+          </div>
+          <div class="resultInner-item hidden" id="totalResult">
+            <div class="resultInner-title" id="totalResultText"></div>
+            <button class="btn" id="playAgain">PLAY AGAIN</button>
+          </div>
+          <div class="resultInner-item">
+            <h2>The House Picked</h2>
+            <div class="chooseBtn large" id="homeResult">
+              <span></span>
+            </div>
+          </div>
         </div>
-        <div class="resultInner-item hidden" id="totalResult">
-          <div class="resultInner-title" id="totalResultText">addass</div>
-          <button class="btn" id="playAgain">PLAY AGAIN</button>
-        </div>
-        <div class="resultInner-item">
-          <h2>The House Picked</h2>
-          <span id="homeResult"></span>
-        </div>
-      </div>
-    </div><!-- /result -->
+      </div><!-- /result -->
+    
+    </main>
+    
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://www.frontendmentor.io/profile/K-ost" target="_blank">K-ost</a>.
+    </footer>
 
-  </div>
-  
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://www.frontendmentor.io/profile/K-ost" target="_blank">K-ost</a>.
-  </footer>
-
-  <audio id="click" src="click.webm"></audio>
-  <audio id="turn" src="turn.webm"></audio>
+  </div><!-- /app -->
 
   <script src="js/index.js"></script>
 </body>

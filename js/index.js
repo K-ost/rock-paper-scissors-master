@@ -2,7 +2,7 @@
 // Elements
 const pentagon = document.querySelector('.pentagon')
 const result = document.querySelector('#result')
-const chooseBtn = document.querySelectorAll('.chooseBtn')
+const chooseBtn = document.querySelectorAll('button.chooseBtn')
 const yourResult = document.querySelector('#yourResult')
 const homeResult = document.querySelector('#homeResult')
 const totalResult = document.querySelector('#totalResult')
@@ -52,15 +52,11 @@ function conditions(you, home) {
 
 // Listener of chooseBtn
 chooseBtn.forEach(btn => {
-  // btn.addEventListener('mouseover', () => {
-  //   turn.play()
-  // })
-
   btn.addEventListener('click', e => {
+    e.stopPropagation()
     const randomNumber = Math.floor(Math.random() * 5) + 1
-    const you = e.target.getAttribute('data-title')
-    const home = items[randomNumber - 1]
-    //click.play()
+    const you = `chooseBtn-${e.target.getAttribute('data-title')}`
+    const home = `chooseBtn-${items[randomNumber - 1]}`
 
     pentagon.classList.add('hidden')
     result.classList.remove('hidden')
@@ -79,7 +75,9 @@ chooseBtn.forEach(btn => {
 // Listener of playAgain
 playAgain.addEventListener('click', () => {
   yourResult.removeAttribute('class')
+  yourResult.classList.add('chooseBtn', 'large')
   homeResult.removeAttribute('class')
+  homeResult.classList.add('chooseBtn', 'large')
   pentagon.classList.remove('hidden')
   result.classList.add('hidden')
   totalResult.classList.add('hidden')
