@@ -543,10 +543,10 @@ button {
     right: 0;
     top: 0;
     transform: none;
-    padding: 95px 32px 32px;
+    padding: 74px 32px 32px;
   }
   .modal-title {
-    margin: 0 0 92px;
+    margin: 0 0 74px;
     text-align: center;
   }
   .modal.opened .modal-content {

@@ -426,9 +426,9 @@ button { cursor: pointer; outline: none; }
       right: 0;
       top: 0;
       transform: none;
-      padding: 95px 32px 32px;
+      padding: 74px 32px 32px;
     }
-    &-title { margin: 0 0 92px; text-align: center; }
+    &-title { margin: 0 0 74px; text-align: center; }
     &.opened &-content { transform: none; }
     &-close { top: auto; bottom: 65px; right: auto; left: 50%; margin-left: -15px; }
   }
