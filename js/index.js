@@ -74,7 +74,7 @@ chooseBtn.forEach(btn => {
       empty.classList.add('hidden')
       homeResult.classList.remove('hidden')
       homeResult.classList.add(home)
-      totalResult.classList.remove('hidden')
+      totalResult.classList.add('show')
       conditions(you, home)
     }, 1500)
 
@@ -92,7 +92,7 @@ playAgain.addEventListener('click', () => {
   homeResultHighlight.classList.remove('show')
   pentagon.classList.remove('hidden')
   result.classList.add('hidden')
-  totalResult.classList.add('hidden')
+  totalResult.classList.remove('show')
   totalResultText.textContent = ''
 })
 

@@ -104,6 +104,7 @@ button {
   padding: 10px 36px;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .btn-large {
   padding-top: 15px;
@@ -413,6 +414,7 @@ button {
   font-weight: 700;
   margin: 0 0 16px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .resultInner-item {
   margin: 0 32px;
@@ -420,13 +422,16 @@ button {
   width: 293px;
   position: relative;
 }
-.resultInner-item.hidden {
-  display: none;
-}
 .resultInner-item#totalResult {
   padding-top: 95px;
   position: relative;
   z-index: 100;
+  transition: all 400ms ease-in-out;
+  overflow: hidden;
+  width: 0;
+}
+.resultInner-item#totalResult.show {
+  width: 293px;
 }
 .resultInner-item h2 {
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
@@ -576,6 +581,12 @@ button {
   }
   .resultInner-item#totalResult {
     padding-top: 25px;
+    transform: scaleX(0);
+    width: auto;
+  }
+  .resultInner-item#totalResult.show {
+    width: auto;
+    transform: scaleX(1);
   }
   .resultInner-item h2 {
     font-size: 15px;

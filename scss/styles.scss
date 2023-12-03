@@ -96,6 +96,7 @@ button { cursor: pointer; outline: none; }
   padding: 10px 36px;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
   &-large { padding-top: 15px; padding-bottom: 15px; }
   &-white {
     background: var(--color-white);
@@ -331,14 +332,20 @@ button { cursor: pointer; outline: none; }
     font-weight: 700;
     margin: 0 0 16px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   &-item {
     margin: 0 32px;
     text-align: center;
     width: 293px;
     position: relative;
-    &.hidden { display: none; }
-    &#totalResult { padding-top: 95px; position: relative; z-index: 100; }
+    &#totalResult {
+      padding-top: 95px; position: relative; z-index: 100;
+      transition: all 400ms ease-in-out;
+      overflow: hidden;
+      width: 0;
+      &.show { width: 293px; }
+    }
     h2 {
       text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.20);
       font-size: 24px;
@@ -449,7 +456,12 @@ button { cursor: pointer; outline: none; }
     &-item {
       margin: 0;
       width: 50%;
-      &#totalResult { padding-top: 25px; }
+      &#totalResult {
+        padding-top: 25px;
+        transform: scaleX(0);
+        width: auto;
+        &.show { width: auto; transform: scaleX(1); }
+      }
       h2 {
         font-size: 15px;
         line-height: 32px;
