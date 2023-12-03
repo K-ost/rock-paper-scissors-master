@@ -12,6 +12,9 @@ const click = document.querySelector('#click')
 const turn = document.querySelector('#turn')
 const empty = document.querySelector('#empty')
 const scoreNumber = document.querySelector('#scoreNumber')
+const showRules = document.querySelector('#showRules')
+const rulesModal = document.querySelector('#rulesModal')
+const modalDismisses = document.querySelectorAll('.modalDismiss')
 
 // Variables
 const winText = 'You Win'
@@ -85,4 +88,14 @@ playAgain.addEventListener('click', () => {
   result.classList.add('hidden')
   totalResult.classList.add('hidden')
   totalResultText.textContent = ''
+})
+
+// showRules
+showRules.addEventListener('click', () => {
+  rulesModal.classList.add('opened')
+})
+modalDismisses.forEach(el => {
+  el.addEventListener('click', () => {
+    rulesModal.classList.remove('opened')
+  })
 })

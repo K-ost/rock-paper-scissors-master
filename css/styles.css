@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
 :root {
+  --color-black: #3B4262;
   --color-dark: #565468;
   --color-text: #2A45C2;
   --color-outline: rgba(255, 255, 255, 0.29);
@@ -13,6 +14,7 @@
   --pentagon: 345px;
   --circle: 148px;
   --largeCircle: 292px;
+  --empty: 224px;
 }
 
 /* Reset */
@@ -99,6 +101,14 @@ button {
   padding: 10px 36px;
   text-align: center;
   text-transform: uppercase;
+}
+.btn-large {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.btn-white {
+  background: var(--color-white);
+  color: var(--color-black);
 }
 .btn-rules {
   position: fixed;
@@ -268,6 +278,71 @@ button {
     transform: scale(0.9) translate(-50%, -50%);
   }
 }
+/* Modal */
+.modal, .modal-overlay {
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+}
+
+.modal, .modal-content {
+  transition: all 200ms ease-in-out;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+}
+.modal.opened {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+.modal-content {
+  background: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  padding: 32px;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+.modal-content img {
+  display: block;
+  margin: 0 auto;
+}
+.modal.opened .modal-content {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.modal-title {
+  color: var(--color-black);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 0 0 20px;
+}
+.modal-close {
+  background: url(../images/icon-close.svg) center no-repeat;
+  display: block;
+  position: absolute;
+  height: 30px;
+  right: 28px;
+  top: 32px;
+  width: 30px;
+}
+
 /* resultInner */
 #result.hidden {
   display: none;
@@ -321,6 +396,7 @@ button {
 
 /* empty */
 .empty {
+  margin: 0 auto;
   height: var(--largeCircle);
   position: relative;
   width: var(--largeCircle);
@@ -334,8 +410,8 @@ button {
   content: "";
   display: block;
   position: absolute;
-  height: 224px;
-  width: 224px;
+  height: var(--empty);
+  width: var(--empty);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -365,15 +441,21 @@ button {
     --pentagon: 227px;
     --circle: 96px;
     --largeCircle: 130px;
+    --empty: 110px;
   }
   .app {
-    padding: 32px;
+    padding: 32px 16px;
   }
   .header {
+    margin: 0 16px 40px;
     padding: 12px 12px 12px 24px;
+    width: auto;
   }
   .header-logo {
     width: 54px;
+  }
+  .pentagon {
+    margin-top: 120px;
   }
   /* score */
   .score {
@@ -431,15 +513,12 @@ button {
   .resultInner {
     flex-wrap: wrap;
   }
-  .resultInner-title {
-    font-size: 15px;
-  }
   .resultInner-item {
-    width: 50%;
     margin: 0;
+    width: 50%;
   }
   .resultInner-item#totalResult {
-    padding-top: 55px;
+    padding-top: 25px;
   }
   .resultInner-item h2 {
     font-size: 15px;
@@ -456,6 +535,29 @@ button {
   }
   .resultInner-item.item3 {
     order: 2;
+  }
+  /* modal */
+  .modal-content {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: none;
+    padding: 95px 32px 32px;
+  }
+  .modal-title {
+    margin: 0 0 92px;
+    text-align: center;
+  }
+  .modal.opened .modal-content {
+    transform: none;
+  }
+  .modal-close {
+    top: auto;
+    bottom: 65px;
+    right: auto;
+    left: 50%;
+    margin-left: -15px;
   }
 }
 

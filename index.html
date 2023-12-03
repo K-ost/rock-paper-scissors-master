@@ -43,7 +43,7 @@
         </button>
       </div><!-- /pentagon -->
 
-      <button class="btn btn-rules">Rules</button>
+      <button class="btn btn-rules" id="showRules">Rules</button>
 
       <div id="result" class="hidden">
         <div class="resultInner">
@@ -64,7 +64,7 @@
 
           <div class="resultInner-item item2 hidden" id="totalResult">
             <div class="resultInner-title" id="totalResultText"></div>
-            <button class="btn" id="playAgain">PLAY AGAIN</button>
+            <button class="btn btn-white btn-large" id="playAgain">PLAY AGAIN</button>
           </div>
         </div>
       </div><!-- /result -->
@@ -77,6 +77,15 @@
     </footer>
 
   </div><!-- /app -->
+
+  <div id="rulesModal" class="modal">
+    <div class="modal-overlay modalDismiss"></div>
+    <div class="modal-content">
+      <a href="#" class="modal-close modalDismiss"></a>
+      <div class="modal-title">RULES</div>
+      <img src="images/image-rules-bonus.svg" alt="">
+    </div>
+  </div><!-- /modal -->
 
   <script src="js/index.js"></script>
 </body>
