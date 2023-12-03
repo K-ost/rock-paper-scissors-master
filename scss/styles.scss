@@ -22,12 +22,13 @@
 /* Reset */
 * { box-sizing: border-box; }
 
+html { min-height: 100%; }
 body {
   background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
   color: var(--color-white);
   font-family: var(--ff);
   margin: 0;
-  min-height: 100vh;
+  min-height: 100%;
 }
 img { max-width: 100%; }
 button { cursor: pointer; outline: none; }
@@ -36,7 +37,7 @@ button { cursor: pointer; outline: none; }
 .app {
   margin: 0 auto;
   padding: 48px 32px;
-  min-height: 100vh;
+  min-height: 100%;
   overflow: hidden;
 }
 
