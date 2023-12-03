@@ -4,7 +4,9 @@ const pentagon = document.querySelector('.pentagon')
 const result = document.querySelector('#result')
 const chooseBtn = document.querySelectorAll('button.chooseBtn')
 const yourResult = document.querySelector('#yourResult')
+const yourResultHighlight = document.querySelector('#yourResult .highlight_box')
 const homeResult = document.querySelector('#homeResult')
+const homeResultHighlight = document.querySelector('#homeResult .highlight_box')
 const totalResult = document.querySelector('#totalResult')
 const totalResultText = document.querySelector('#totalResultText')
 const playAgain = document.querySelector('#playAgain')
@@ -29,10 +31,12 @@ scoreNumber.textContent = localStorage.getItem('score') | 0
 function conditionLogic(you, home, current, win1, win2, lose1, lose2) {
   if ((you === current && home === win1) || (you === current && home === win2)) {
     totalResultText.textContent = winText
+    yourResultHighlight.classList.add('show')
     score += 1
   }
   if ((you === current && home === lose1) || (you === current && home === lose2)) {
     totalResultText.textContent = loseText
+    homeResultHighlight.classList.add('show')
   }
 }
 
@@ -84,6 +88,8 @@ playAgain.addEventListener('click', () => {
   yourResult.classList.add('chooseBtn', 'large')
   homeResult.removeAttribute('class')
   homeResult.classList.add('chooseBtn', 'large', 'hidden')
+  yourResultHighlight.classList.remove('show')
+  homeResultHighlight.classList.remove('show')
   pentagon.classList.remove('hidden')
   result.classList.add('hidden')
   totalResult.classList.add('hidden')
