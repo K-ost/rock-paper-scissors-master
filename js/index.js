@@ -10,43 +10,45 @@ const totalResultText = document.querySelector('#totalResultText')
 const playAgain = document.querySelector('#playAgain')
 const click = document.querySelector('#click')
 const turn = document.querySelector('#turn')
+const empty = document.querySelector('#empty')
+const scoreNumber = document.querySelector('#scoreNumber')
 
 // Variables
 const winText = 'You Win'
 const loseText = 'You Lose'
 const gameDraw = 'Game draw'
 const items = [ "rock", "paper", "scissors", "lizard", "spock" ]
+let score = localStorage.getItem('score') | 0
+scoreNumber.textContent = localStorage.getItem('score') | 0
 
+
+// conditionFunc
+function conditionLogic(you, home, current, win1, win2, lose1, lose2) {
+  if ((you === current && home === win1) || (you === current && home === win2)) {
+    totalResultText.textContent = winText
+    score += 1
+  }
+  if ((you === current && home === lose1) || (you === current && home === lose2)) {
+    totalResultText.textContent = loseText
+  }
+}
 
 // Conditions
 function conditions(you, home) {
-  console.log(you, home)
+  you = you.split('-')[1]
+  home = home.split('-')[1]
+
   if (you === home) totalResultText.textContent = gameDraw
 
-  if (you === 'scissors' && home === 'lizard') totalResultText.textContent = winText
-  if (you === 'scissors' && home === 'paper') totalResultText.textContent = winText
-  if (you === 'scissors' && home === 'rock') totalResultText.textContent = loseText
-  if (you === 'scissors' && home === 'spock') totalResultText.textContent = loseText
+  conditionLogic(you, home, 'scissors', 'lizard', 'paper', 'rock', 'spock')
+  conditionLogic(you, home, 'paper', 'rock', 'spock', 'lizard', 'scissors')
+  conditionLogic(you, home, 'rock', 'lizard', 'scissors', 'paper', 'spock')
+  conditionLogic(you, home, 'lizard', 'paper', 'spock', 'rock', 'scissors')
+  conditionLogic(you, home, 'spock', 'rock', 'scissors', 'paper', 'lizard')
 
-  if (you === 'paper' && home === 'rock') totalResultText.textContent = winText
-  if (you === 'paper' && home === 'spock') totalResultText.textContent = winText
-  if (you === 'paper' && home === 'lizard') totalResultText.textContent = loseText
-  if (you === 'paper' && home === 'scissors') totalResultText.textContent = loseText
+  scoreNumber.textContent = score
+  localStorage.setItem('score', score)
 
-  if (you === 'rock' && home === 'lizard') totalResultText.textContent = winText
-  if (you === 'rock' && home === 'scissors') totalResultText.textContent = winText
-  if (you === 'rock' && home === 'paper') totalResultText.textContent = loseText
-  if (you === 'rock' && home === 'spock') totalResultText.textContent = loseText
-
-  if (you === 'lizard' && home === 'paper') totalResultText.textContent = winText
-  if (you === 'lizard' && home === 'spock') totalResultText.textContent = winText
-  if (you === 'lizard' && home === 'rock') totalResultText.textContent = loseText
-  if (you === 'lizard' && home === 'scissors') totalResultText.textContent = loseText
-
-  if (you === 'spock' && home === 'rock') totalResultText.textContent = winText
-  if (you === 'spock' && home === 'scissors') totalResultText.textContent = winText
-  if (you === 'spock' && home === 'paper') totalResultText.textContent = loseText
-  if (you === 'spock' && home === 'lizard') totalResultText.textContent = loseText
 }
 
 
@@ -62,21 +64,23 @@ chooseBtn.forEach(btn => {
     yourResult.classList.add(you)
     
     setTimeout(() => {
+      empty.classList.add('hidden')
+      homeResult.classList.remove('hidden')
       homeResult.classList.add(home)
       totalResult.classList.remove('hidden')
       conditions(you, home)
     }, 1500)
 
-    // Winning result
   })
 })
 
 // Listener of playAgain
 playAgain.addEventListener('click', () => {
+  empty.classList.remove('hidden')
   yourResult.removeAttribute('class')
   yourResult.classList.add('chooseBtn', 'large')
   homeResult.removeAttribute('class')
-  homeResult.classList.add('chooseBtn', 'large')
+  homeResult.classList.add('chooseBtn', 'large', 'hidden')
   pentagon.classList.remove('hidden')
   result.classList.add('hidden')
   totalResult.classList.add('hidden')

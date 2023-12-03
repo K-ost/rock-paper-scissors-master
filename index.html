@@ -18,7 +18,7 @@
       <div class="score">
         <div>
           <div class="score-title">Score</div>
-          <div class="score-number">0</div>
+          <div class="score-number" id="scoreNumber"></div>
         </div>
       </div>
     </header><!-- /header -->
@@ -47,21 +47,24 @@
 
       <div id="result" class="hidden">
         <div class="resultInner">
-          <div class="resultInner-item">
+          <div class="resultInner-item item1">
             <h2>You Picked</h2>
             <div class="chooseBtn large" id="yourResult">
               <span></span>
             </div>
           </div>
-          <div class="resultInner-item hidden" id="totalResult">
-            <div class="resultInner-title" id="totalResultText"></div>
-            <button class="btn" id="playAgain">PLAY AGAIN</button>
-          </div>
-          <div class="resultInner-item">
+          
+          <div class="resultInner-item item3">
             <h2>The House Picked</h2>
-            <div class="chooseBtn large" id="homeResult">
+            <div class="empty" id="empty"></div>
+            <div class="chooseBtn large hidden" id="homeResult">
               <span></span>
             </div>
+          </div>
+
+          <div class="resultInner-item item2 hidden" id="totalResult">
+            <div class="resultInner-title" id="totalResultText"></div>
+            <button class="btn" id="playAgain">PLAY AGAIN</button>
           </div>
         </div>
       </div><!-- /result -->
